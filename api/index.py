@@ -2,9 +2,9 @@ from flask import Flask, render_template, request
 import os
 import json
 
-DB_ID = os.environ['DATABASE_ID']
-DB_BUTTONS_ID = os.environ['DB_BUTTONS_ID']
-DB_RECIPES_ID = os.environ['DB_RECIPES_ID']
+DB_ID = os.environ.get('DATABASE_ID')
+DB_BUTTONS_ID = os.environ.get('DB_BUTTONS_ID')
+DB_RECIPES_ID = os.environ.get('DB_RECIPES_ID')
 
 # Initialize the flask project
 app = Flask(__name__)
@@ -173,11 +173,8 @@ if __name__ == "__main__":
 
 import requests
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
-
-TOKEN = os.environ["TOKEN"]
+TOKEN = os.environ.get('TOKEN')
 
 headers = {
   "Authorization": "Bearer " + TOKEN,
