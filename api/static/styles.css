@@ -1,0 +1,357 @@
+* {
+    box-sizing: border-box;
+    color-scheme: dark;
+    font-family: "Calibri";
+}
+
+h2 {
+    width: 100vw;
+    margin: auto;
+    text-align: center;
+}
+
+#shopping, #list, #recipes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#recipes {
+    display: none;
+}
+
+.imageIcon {
+    width: auto;
+    height: 20px;
+    margin: 0px 20px 0px 20px;
+    z-index: 1;
+}
+
+.item {
+    width: 94vw;
+    border-radius: 50px;
+    border: 1px solid rgba(94, 94, 94, 0.4);
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 10px;
+    display: flex;
+    background-color: rgb(41, 41, 41);
+    /* animation-name: none; */
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    transition: 0.3s;
+    position: relative;
+}
+
+.recipe {
+    width: 94vw;
+    border-radius: 50px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(41, 41, 41);
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    /* border: solid 1px #00000070; */
+    box-shadow: 0 0 10px black;
+    transition: 0.3s;
+}
+
+.recipe:hover, .item:hover {
+    transform: scale(1.1);
+}
+
+.ingredients-area {
+    z-index: 1;
+    text-align: center;
+    font-size: 0.8em;
+    display: none;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+}
+
+.recipe .text {
+    z-index: 1;
+}
+
+.fav {
+    position: absolute;
+    right: 3%;
+    top: 25%;
+    text-shadow: 0 0 20px #b7b982;
+}
+
+.gold-border {
+    border-color: gold;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.button {
+    width: 50px;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(41, 41, 41);
+    margin: 5px;
+    animation-name: button-disappear;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+}
+
+@keyframes button-appear {
+    0% {
+        opacity: 0;
+        width: 0px;
+    }
+    75% {
+        opacity: 0;
+        width: 10px;
+    }
+    100% {
+        opacity: 1;
+        width: 50px;
+    }
+}
+
+@keyframes button-disappear {
+    0% {
+        opacity: 1;
+        width: 50px;
+    }
+    75% {
+        opacity: 0;
+        width: 10px;
+    }
+    100% {
+        opacity: 0;
+        width: 0px;
+    }
+}
+
+#groceryButton {
+    display: none;
+}
+
+.button img {
+    margin: 0px;
+}
+
+@keyframes hide-bottom {
+    0% {
+        opacity: 1;
+        height: auto;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    75% {
+        opacity: 0;
+        height: auto;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    100% {
+        opacity: 0;
+        height: 0px;
+        padding: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+.title {
+    border-radius: 50px;
+    padding: 2px;
+    margin: 0px;
+    background-color: rgba(41, 41, 41, 0);
+    font-weight: bold;
+    width: 100vw;
+    transition: 0.3s;
+}
+
+.badge {
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#footer {
+    background-color: #1c1b22;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    border: 5px solid rgb(68, 68, 68);
+    border-width: 1px 0px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 3;
+}
+
+#search {
+    width: 0px;
+    display: none;
+    height: auto;
+    animation-name: search-appear;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+}
+
+#search input {
+    border-radius: 20px;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    padding: 20px;
+    border: 1px solid gray;
+    margin: 0px;
+}
+
+#search input:focus {
+    outline: none;
+}
+
+@keyframes search-appear {
+    0% {
+        opacity: 0;
+        width: 0px;
+    }
+    75% {
+        opacity: 0;
+        width: 50px;
+    }
+    100% {
+        opacity: 1;
+        width: min(300px, 50%);
+    }
+}
+
+@keyframes search-disappear {
+    0% {
+        opacity: 1;
+        width: 300px;
+    }
+    75% {
+        opacity: 0;
+        width: 50px;
+    }
+    100% {
+        opacity: 0;
+        width: 0px;
+    }
+}
+
+@media (min-width: 508px) {
+    #body {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .imageIcon {
+        width: auto;
+        height: 50px;
+        margin: 5px;
+    }
+
+    .item {
+        border-radius: 10px;
+        width: 140px;
+        min-height: 100px;
+        margin: 10px;
+        position: relative;
+        justify-content: center;
+        /* animation-name: none; */
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
+        transition: 0.3s;
+    }
+
+    .recipe {
+        width: 150px;
+        height: 230px;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    .ingredients-area {
+        display: block;
+    }
+
+    .recipe .imageIcon {
+        display: none;
+    }
+
+    .recipe .text {
+        margin: 10px;
+        text-align: center;
+    }
+    
+    .fav {
+        position: absolute;
+        right: 40%;
+        top: 1%;
+    }
+    .item .text {
+        position: absolute;
+        top: 70%;
+    }
+    
+    @keyframes hide-side {
+        0% {
+            opacity: 1;
+            width: 140px;
+            padding: 10px;
+            margin: 10px;
+        }
+        75% {
+            opacity: 0;
+            width: 140px;
+            padding: 10px;
+            margin: 10px;
+        }
+        100% {
+            opacity: 0;
+            width: 0px;
+            padding: 0px;
+            margin: 0px;
+        }
+    }
+
+    .title {
+        width: 100vw;
+    }
+
+    .button {
+        width: 50px;
+        border-radius: 15px;
+        padding: 10px;
+        background-color: rgb(41, 41, 41);
+        margin: 5px;
+    }
+    
+    .button img {
+        margin: 0px;
+        height: 20px;
+    }
+}
