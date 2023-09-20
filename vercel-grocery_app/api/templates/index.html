@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Grocery list</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    </head>
+    <body>
+        <div id="shopping">
+            <h2>Shopping List</h2>
+            {% for category in categories %}
+                <div class="title">{{ category }}</div>
+                {% for i in data | sort(attribute="name")  %}
+                    {% if i.type == category %}
+                        <div id="{{ i.id }}" class="item {{ i.type }} {% if i.tobuy %}x{% endif %} {% if i.season %}gold-border{% endif %}" {% if i.tobuy %}style="display: flex;"{% else %}style="display: none;"{% endif %} name="{{ i.name }}">
+                            <img class="imageIcon" src="{{ i.icon }}">
+                            <span class="text">
+                                {{ i.name }}
+                            </span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div id="recipes">
+            <h2>Recipes</h2>
+            {% for category in recipesCategories %}
+            <div class="title">{{ category }}</div>
+                {% for recipe in recipes | sort(attribute="name") %}
+                    {% if recipe.type in category %}
+                        <div id="{{ recipe.id }}" class="recipe" data-ingredients="{{ recipe.ingredients }}" style="background-image: url('{{ recipe.img }}'); background-position: 50%; background-size: cover;">
+                            <div class="background-overlay"></div>
+                            <img class="imageIcon" src="{{ recipe.icon }}">
+                            <div class="text">{{ recipe.name }}</div>
+                            <div class="ingredients-area"></div>
+                            <div class="fav">{{ recipe.Fav }}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div> 
+
+        <div class="item-adder">
+        </div>
+        <div style="height: 50px;"></div>
+
+        <div id="footer">
+            <div class="button" id="listButton">
+                <img class="imageIcon" src="">
+            </div>
+            <div id="search">
+                <input type="text" placeholder="Search by name" id="searchBar">
+            </div>
+            <div class="button" id="recipesButton">
+                <img class="imageIcon" src="">
+            </div>
+            <div class="button" id="emptyButton">
+                <img class="imageIcon" src="">
+            </div>
+            <div id="button_img" hidden>{{ button_img }}</div>
+        </div>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
