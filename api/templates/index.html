@@ -15,7 +15,7 @@
                 {% for i in data | sort(attribute="name")  %}
                     {% if i.type == category %}
                         <div id="{{ i.id }}" class="item {{ i.type }} {% if i.tobuy %}x{% endif %} {% if i.season %}gold-border{% endif %}" {% if i.tobuy %}style="display: flex;"{% else %}style="display: none;"{% endif %} name="{{ i.name }}">
-                            <img class="imageIcon" src="{{ i.icon }}">
+                            <img class="imageIcon" src="{{ i.icon }}" loading="lazy">
                             <span class="text">
                                 {{ i.name }}
                             </span>
@@ -32,7 +32,7 @@
                     {% if recipe.type in category %}
                         <div id="{{ recipe.id }}" class="recipe" data-ingredients="{{ recipe.ingredients }}" style="background-image: url('{{ recipe.img }}'); background-position: 50%; background-size: cover;">
                             <div class="background-overlay"></div>
-                            <img class="imageIcon" src="{{ recipe.icon }}">
+                            <img class="imageIcon" src="{{ recipe.icon }}" loading="lazy">
                             <div class="text">{{ recipe.name }}</div>
                             <div class="ingredients-area"></div>
                             <div class="fav">{{ recipe.Fav }}</div>
@@ -48,16 +48,16 @@
 
         <div id="footer">
             <div class="button" id="listButton">
-                <img class="imageIcon" src="">
+                <img class="imageIcon" src="" loading="lazy">
             </div>
             <div id="search">
                 <input type="text" placeholder="Search by name" id="searchBar">
             </div>
             <div class="button" id="recipesButton">
-                <img class="imageIcon" src="">
+                <img class="imageIcon" src="" loading="lazy">
             </div>
             <div class="button" id="emptyButton">
-                <img class="imageIcon" src="">
+                <img class="imageIcon" src="" loading="lazy">
             </div>
             <div id="button_img" hidden>{{ button_img }}</div>
         </div>
